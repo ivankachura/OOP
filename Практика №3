@@ -1,0 +1,30 @@
+#include "pch.h" 
+#include <iostream> 
+#include <string> 
+
+using namespace std; 
+
+class Book 
+{ 
+public: 
+string avtor; 
+string name; 
+double list; 
+void open(); 
+}; 
+
+int main() 
+{ 
+Book Kniga; 
+Book.open(); 
+return 0; 
+} 
+
+void Kniga::open() 
+{ 
+double random; 
+cin >> avtor; 
+cin >> name; 
+random = 1 + rand() % 50; 
+cout << "Автор: " << avtor << " " << "Название: " << name << " " << "Страницы: " << random << endl; 
+}
