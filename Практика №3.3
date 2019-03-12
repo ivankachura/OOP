@@ -1,0 +1,44 @@
+#include <iostream> 
+#include <string> 
+#include <ctime> 
+using namespace std; 
+
+class automobile
+{ 
+int speed; 
+int year; 
+string name; 
+
+public: 
+automobile() 
+{ 
+year = 0; 
+speed = 0; 
+name = "Нету названия."; 
+} 
+void set_automobile() 
+{
+cout << "Введите год автомобиля: "; 
+cin >> year;
+cout << "Введите скорость автомобиля: "; 
+cin >> speed;
+cout << "Введите название автомобиля: "; 
+cin >> name; 
+
+} 
+void get_automobile() 
+{
+cout << "Год выпуска автомобиля: " << year << endl;
+cout << "Скорость: " << speed << "КМ/Ч" << endl; 
+cout << "Название автомобиля: " << name << endl; 
+} 
+}; 
+
+int main() 
+{ 
+automobile a; 
+a.set_automobile(); 
+a.get_automobile(); 
+system("pause"); 
+return 0; 
+}
