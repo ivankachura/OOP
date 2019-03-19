@@ -1,0 +1,76 @@
+#include <iostream>
+#include <ctime>
+#include <iomanip>
+
+using namespace std;
+
+void sort(int *a , int n );
+void sort(double *a , int n );
+
+int main() 
+{
+	srand(time(0));
+	int n,z;
+	cout << "!--------------------!" << endl;
+	cout<<"Введите кол-во чисел: "<<endl;
+	cin >> n;
+	cout<<"Дробные числа (0), Целые числа (1): "<<endl;
+	cin>>z;
+	if (z == 0) {
+		double*a = new double[n];
+		for (int i = 0; i < n; i++) {
+		    cout << "!--------------------!" << endl;
+		    cout<< "Введите дробное число: " << endl;
+			cin >> a[i];
+		}
+		sort(a, n);
+
+		for (int i = 0; i < n; i++)
+			cout << a[i] << endl;
+	}
+	else {
+		int*a = new int[n];
+		for (int i = 0; i < n; i++) {
+		     cout << "!--------------------!" << endl;
+		     cout <<"Введите целое число: "<<endl;
+			cin >> a[i];
+		}
+		sort(a, n);
+
+		for (int i = 0; i < n; i++)
+			cout << a[i] << endl;
+	}
+	system("pause");
+	return 0;
+
+}
+
+void sort(double *a, int n)
+{
+	int i, j, tmp;
+cout<<"Идёт сортировка дробных чисел..."<< endl;
+	for (i = 0; i < n; i++)
+		for (j = n - 1; j >= 0; j--)
+			if (a[j] < a[j + 1])
+			{
+				tmp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = tmp;
+			}
+cout << "Сортировка закончилась!" << endl;
+}
+
+void sort(int *a, int n)
+{
+	int i, j, tmp;
+cout<<"Идёт сортировка целых чисел..."<<endl;
+	for (i = 0; i < n; i++)
+		for (j = n - 1; j >= 0; j--)
+			if (a[j] < a[j + 1])
+			{
+				tmp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = tmp;
+			}
+cout << "Сортировка закончилась!" << endl;
+}
