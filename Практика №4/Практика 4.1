@@ -1,0 +1,53 @@
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+int *p;
+void mass( int n);
+void zap(int n);
+void viv(int n);
+void del() { delete[] p; }
+
+int main()
+{
+	int n;
+	int ss;
+	do {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+	    cout << "Введите S: " << endl;
+		cin >> ss;
+		switch (ss)
+		{
+		case 0:
+			break;
+		case 1:
+		cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "Введите N: " << endl;
+			cin >> n;
+			mass(n);
+			break;
+		case 2: zap(n);
+			break;
+		case 3: viv(n);
+			break;
+		case 4: del();
+			break;
+		default:
+			break;
+		}
+	} while (ss != 0);
+	system("pause");
+    return 0;
+}
+
+void mass(int n) {
+	p = new int[n];
+	}
+
+void zap(int n) {
+	for (int i = 0; i < n; i++)p[i] = i + 1;
+}
+void viv(int n) {
+	for (int i = 0; i < n; i++) cout << p[i] << endl;
+}
