@@ -1,0 +1,28 @@
+#include "stdafx.h"
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+	double a=4.6, b=1.5, y=0, t=0;
+
+	
+	if (a <= b) {
+		y = a - b / a + b*a + b / a*a - a*b + b*b;
+	}
+	else y = a + 2 * log(b);
+	if (y == b) {
+		t = (2 * y + sqrt(y*y - a)) / 2 * b - sqrt(a*a - y);
+	}
+	else if (y < b) {
+		t = sin(y)*sin(y) + 1 / tan(a-b);
+	}
+	else t = cbrt(y*sin(a))+ 1/sqrt(y*cos(b));
+	cout << a << endl;
+	cout << b << endl;
+	cout << y << endl;
+	cout << t << endl;
+	system("pause");
+    return 0;
+}
