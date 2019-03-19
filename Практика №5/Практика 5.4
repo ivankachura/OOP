@@ -1,0 +1,84 @@
+#include <iostream>
+#include<ctime>
+#include <iomanip>
+
+using namespace std;
+
+double calc(int a, int b);
+double calc(double a, double b);
+
+int main() {
+	int z;
+	cout << "Выберите тип чисел(1-Целые,2-Дробные): " << endl;
+	cin >> z;
+	if (z == 1) {
+		int a , b  ;
+		cout << "Введите ДВА числа (желательно целые): " << endl;
+		cin >> a >> b;
+		cout << "Ответ: " << endl;
+		cout << calc(a, b) << endl;
+	}
+	else {
+		double a, b;
+		cout << "Введите ДВА числа (желательно дробные): " << endl;
+		cin >> a >> b;
+		cout << "Ответ: " << endl;
+		cout << calc(a, b) << endl;
+	}
+	system("pause");
+	return 0;
+}
+
+double calc(int a, int b)
+{
+	int k;
+	do {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+	    cout << "Выберите операцию..." << endl;
+		cout << "{} = I1+2-3*4/" << endl;
+		cin >> k;
+		switch (k)
+		{
+		case 1:
+			return a + b;
+			break;
+		case 2:
+			return a - b;
+			break;
+		case 3:
+			return a*b;
+			break;
+		case 4: 
+			return a / b;
+		default:
+			break;
+		}
+
+	} while (k != 0);
+}
+double calc(double a, double b)
+{
+	int k;
+	do {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+	    cout << "Выберите операцию..." << endl;
+		cout << "{} = D1+2-3*d/" << endl;
+		cin >> k;
+		switch (k)
+		{
+		case 1:
+			return a + b;
+			break;
+		case 2:
+			return a - b;
+			break;
+		case 3:
+			return a*b;
+			break;
+		case 4:
+			return a / b;
+		default:
+			break;
+		}
+	} while (k != 0);
+}
