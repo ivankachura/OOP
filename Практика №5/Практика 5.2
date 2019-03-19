@@ -1,0 +1,82 @@
+#include <iostream>
+#include<ctime>
+#include <iomanip>
+
+using namespace std;
+
+void sort(int *a , int n );
+void sort(double *a , int n );
+
+int main() {
+	srand(time(0));
+	int n,z;
+	cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ " << endl;
+	cout<<"Введите кол-во чисел: "<<endl;
+	cin >> n;
+	cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ " << endl;
+	cout<<"Дробные - 0, Целые - 1. Введите цифру: "<<endl;
+	cin>>z;
+	if (z == 0) {
+		double*a = new double[n];
+		for (int i = 0; i < n; i++) 
+		{
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ " << endl;
+		    cout<<"Введите дробное число: "<<endl;
+			cin >> a[i];
+		}
+		sort(a, n);
+
+		for (int i = 0; i < n; i++)
+			cout << a[i] << endl;
+	}
+	else {
+		int*a = new int[n];
+		for (int i = 0; i < n; i++) 
+		{
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ " << endl;
+		     cout<<"Введите целове число: "<<endl;
+			cin >> a[i];
+		}
+		sort(a, n);
+		for (int i = 0; i < n; i++)
+			cout << a[i] << endl;
+	}
+	system("pause");
+	return 0;
+}
+
+void sort(double *a, int n)
+ {
+	long i, j, k;
+	cout << "!-----------------------------!" << endl;
+	cout << "Идёт сортировка [Д] - ОЖИДАЙТЕ!" << endl;
+	double x;
+	for (i = 0; i < n; i++) 
+	{ 
+		k = i; x = a[i];
+
+		for (j = i + 1; j < n; j++)
+			if (a[j] < x) {
+				k = j; x = a[j];
+			}
+		a[k] = a[i]; a[i] = x;
+	}
+	cout << "Сортировка закончена..." << endl;
+}
+void sort(int *a, int n)
+{
+	long i, j, k;
+	cout << "!-----------------------------!" << endl;
+	cout << "Идёт сортировка [Ц] - ОЖИДАЙТЕ!" << endl;
+	double x;
+	for (i = 0; i < n; i++) 
+	{
+		k = i; x = a[i];
+		for (j = i + 1; j < n; j++)
+			if (a[j] < x) {
+				k = j; x = a[j];
+			}
+		a[k] = a[i]; a[i] = x;
+	}
+    cout << "Сортировка закончена..." << endl;
+}
