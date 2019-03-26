@@ -1,0 +1,39 @@
+#include "stdafx.h"
+#include <iostream>
+#include<ctime>
+#include <iomanip>
+using namespace std;
+void zzz(int **ptarray, int m, int n);
+void get(int **ptarray, int m, int n );
+int main()
+{
+	int m, n;
+	srand(time(0));
+	cin >> m >> n;
+	int **ptarray = new int*[n];
+	for (int count = 0; count < n; count++)
+		ptarray[count] = new int[m];
+	zzz(ptarray, m, n);
+	get(ptarray, m, n);
+	for (int count = 0; count < n; count++)
+		delete[]ptarray[count];
+
+
+	system("pause");
+    return 0;
+}
+
+void get(int **ptarray, int m, int n) {
+
+	for (int count_row = 0; count_row < n; count_row++)
+	{
+		for (int count_column = 0; count_column < m; count_column++)
+			cout << setw(4) << setprecision(2) << ptarray[count_row][count_column] << "   ";
+		cout << endl;
+	}
+}
+void zzz(int **ptarray, int m, int n) {
+	for (int count_row = 0; count_row < n; count_row++)
+		for (int count_column = 0; count_column < m; count_column++)
+			ptarray[count_row][count_column] = (rand() % 40 + 10);
+}
