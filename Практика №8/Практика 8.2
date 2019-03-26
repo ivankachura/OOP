@@ -1,0 +1,24 @@
+#include "stdafx.h"
+#include <fstream>
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	string s;
+	ifstream file("TEST.txt");
+	if (file.is_open()){
+		cout << "Файл открылся!" << endl;
+	for (file >> s; !file.eof(); file >> s) 
+		cout << s << endl;
+	}
+	else
+	{
+		cout << "Файл не открыт ;(" << endl;
+		return -1;
+	}
+	system("pause");
+	return 0;
+}
