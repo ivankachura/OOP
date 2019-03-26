@@ -1,0 +1,60 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+
+class Property {
+protected:	
+	int worth;
+public:
+	virtual double nalog() = 0;
+	Property(int worth) {
+		this->worth = worth;
+	}
+	virtual ~Property() {};
+};
+
+class Car:  public Property
+{
+	public: double nalog() {
+		return worth / 200;
+	}
+			Car(int worth) :Property(worth) {
+			}
+};
+
+class CountryHouse : public Property
+{
+public: double nalog() {
+	return worth / 500;
+}
+		CountryHouse(int worth) :Property(worth) {
+		}
+};
+
+class Appartment : public Property
+{
+public: double nalog() {
+	return worth / 1000;
+}
+		Appartment(int worth) :Property(worth) {
+		}
+};
+
+int main()
+{
+	Property* a[7];
+	for (int i = 0; i < 7; i++) {
+		int worth;
+		cout << "| _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |" << endl;
+		cout << "Введите стоимость объекта: " << i + 1;
+		cin >> worth;
+		if (i < 3)a[i] = new Appartment(worth);
+		else if (i < 5)a[i] = new Car(worth);
+		else a[i] = new CountryHouse(worth);
+    cout << "| _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |" << endl;
+		cout << "Стоимость налога: " << i + 1 << a[i]->nalog() << endl;
+	}
+	delete[] *a;
+	system("pause");
+    return 0;
+}
