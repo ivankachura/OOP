@@ -1,0 +1,16 @@
+#include "stdafx.h"
+#include <fstream>
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	string a;
+	cin >> a;
+	ofstream fout("TEST.txt"); 
+	fout << a;
+	fout.close();
+	system("pause");
+	return 0;
+}
