@@ -1,0 +1,80 @@
+#include <iostream>
+#include<string>
+#include <pch.h>
+
+using namespace std;
+
+class Animal {
+	protected:
+		string name;
+		int year;
+public:
+		Animal(string name, int year) {
+			this->name = name;
+			this->year = year;
+			}
+		Animal() {
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout<<"Введите кол-во лет: "<<endl;
+			cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cin >> name;
+			cin >> year;
+		}
+		virtual void golos() = 0;
+		void get_Data() {
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout << "Ya" << name << " " << year << endl;
+			cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		}
+};
+
+class Cat: public Animal {
+public:
+	Cat(string name, int year):Animal(name,year){}
+	Cat():Animal(){}
+	void golos() {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "Мяу."<<endl;
+		cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+	}
+
+};
+
+class Dog : public Animal {
+public:
+	Dog(string name, int year) :Animal(name, year) {}
+	Dog() :Animal() {}
+	void golos() {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "Гав, Гав." << endl;
+		cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+	}
+
+};
+
+class Parrot : public Animal {
+public:
+	Parrot(string name, int year) :Animal(name, year) {}
+	Parrot() :Animal() {}
+	void golos() {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "Карррр." << endl;
+		cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+	}
+
+};
+int main(){
+	Cat a;
+	a.get_Data();
+	a.golos();
+
+	Dog b;
+	b.get_Data();
+	b.golos();
+
+	Parrot c;
+	c.get_Data();
+	c.golos();
+	system("pause");
+    return 0;
+}
