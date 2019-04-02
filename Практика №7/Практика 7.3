@@ -1,0 +1,62 @@
+#include "pch.h"
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+class Vehicle {
+protected:int massa;
+	int skorost;
+	string name;
+public:Vehicle() {
+    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+	cout << "Введите массу и скорость машины:" << endl;
+	cin >> massa >> skorost >> name;
+}
+	   virtual  void kto_ya() = 0;
+};
+class Bycicle:public Vehicle {
+public:
+	Bycicle() :Vehicle() {  }
+	void kto_ya() {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "Велосипед:" << name << ' ' << skorost << "km/h " << massa << "kg"<<endl;
+	}
+
+};
+class Bus :public Vehicle {
+public:
+	Bus() :Vehicle() {}
+	void kto_ya() {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "Автобус:" << name << ' ' << skorost << "km/h " << massa << "kg" << endl;
+	}
+
+};
+
+class Avto :public Vehicle {
+public:
+	Avto() :Vehicle() { }
+	void kto_ya() {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "Машина:" << name << ' ' << skorost << "km/h " << massa << "kg" << endl;
+	}
+
+};
+int main()
+{
+	string z;
+	cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+	cout << "Введите транспортное средство (Автобус, Автомобиль, Велосипед): " << endl;
+	cin >> z;
+	if(z=="Автобус"){ Bus a; a.kto_ya();
+	}
+	else if (z == "Автомобиль") {
+		Avto a; a.kto_ya();
+	}
+	else if (z == "Велосипед") {
+		Bycicle a; a.kto_ya();
+	}
+	system("pause");
+    return 0;
+}
