@@ -1,0 +1,68 @@
+#include <iostream>
+#include <cmath>
+#include "pch.h"
+using namespace std;
+
+
+class Forug{
+protected:
+	int a1, a2, a3, a4;
+public:
+	Forug() {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _";
+		cout << "Введите длину сторон: " << endl;
+		cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _";
+		cin >> a1;
+		cin >> a2;
+		cin >> a3;
+		cin >> a4;
+	} 
+	virtual void sqaire() = 0;
+
+
+};
+class Romb:public Forug {
+public:
+	double sinus;
+	Romb() :Forug() {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _";
+		cout << "Введите меньший угол: " << endl;
+		cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _";
+		cin >> sinus;
+	}
+	void sqaire() {
+		cout <<  a1*a1*sin(sinus)<<endl;;
+	}
+};
+
+class Pryamougolnic :public Forug {
+public:
+	Pryamougolnic() :Forug() {
+
+	}
+	void sqaire() {
+		cout<< a1*a3<<endl;
+	}
+};
+class Figure {
+public:
+
+	void sqaire(Forug *forug) {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _";
+		cout << "Площадь равна: ";
+		cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _";
+		forug->sqaire();
+	}
+
+};
+
+int main()
+{
+	Pryamougolnic c;
+	Romb b;
+	Figure a;
+	a.sqaire(&b);
+	a.sqaire(&c);
+	system("pause");
+    return 0;
+}
