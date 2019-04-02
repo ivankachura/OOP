@@ -1,0 +1,144 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+
+class Screen {
+protected:
+	double razr;
+public:
+	Screen(double size) { this->razr = size; }
+
+	virtual void izmScreen(double size) = 0;
+
+};
+class Keyboard {
+protected:
+	int buttons;
+public:
+	Keyboard(int buttons) { this->buttons = buttons; }
+
+	virtual void izmKeyboard(int buttons) = 0;
+};
+class Computer : public Screen, Keyboard {
+public:
+	Computer(double razr, int buttons) : Screen(razr), Keyboard(buttons) {};
+
+	void izmScreen(double size) {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "ЭКРАН" << razr <<
+			"БЫЛ ИЗМЕНЁН" << size << "РАЗМЕР" << endl;
+		razr = size;
+	}
+
+	void izmKeyboard(int buttons) {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "КЛАВИАТУРА С" << this->buttons << " КНОПКАМИ" <<
+			"БЫЛА ИЗМЕНЕНА" << buttons << " КНОПОК" << endl;
+		this->buttons = buttons;
+	}
+	~Computer() {}
+};
+
+class Notebook : public Screen, Keyboard {
+public:
+	Notebook(double razr, int buttons) : Screen(razr), Keyboard(buttons) {};
+
+	void izmScreen(double size) {
+		if (razr == size) {
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout << "Экран был изменён." << endl;
+		}
+		else {
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout << "Экран не изменён." << endl;
+		}
+	}
+
+	void izmKeyboard(int buttons) {
+		if (this->buttons == buttons) {
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout << "Клавиатура была изменена." << endl;
+		}
+		else {
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout << "Клавиатура не была изменена." << endl;
+		}
+	}
+
+	~Notebook() {}
+};
+
+class Phone : public Screen, Keyboard {	
+public:
+	Phone(double razr, int buttons) : Screen(razr), Keyboard(buttons) {};
+
+	void izmScreen(double size) {
+		if (razr == size) {
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout << "ЭКРАН ТЕЛЕФОНА ИЗМЕНЁН" << endl;
+		}
+		else {
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout << "ЭКРАН ТЕЛЕФОНА НЕ БЫЛ ИЗМЕНЕН" << endl;
+		}
+	}
+
+	void izmKeyboard(int buttons) {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "Клавиатура не может быть изменена!" << endl;
+	}
+
+	~Phone() {}
+};
+
+int main() {
+	
+	int z=1;
+	do {
+	    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		cout << "Какое устройсто будет рабоать: 1-telefon, 2- notebook, 3- computer" << endl;
+		int e, r;
+		cin >> z;
+		switch (z)
+		{
+		    cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		case 1: {cout << "Введите размер экрана и кол-во кнопок: " << endl;
+
+				cin >> e >> r;
+				Phone a(e, r);
+				cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+				cout << "На сколько вы хотите изменить размер экрана и кол-во кнопок: " << endl;
+				cin >> e >> r;
+				a.izmKeyboard(e);
+				a.izmScreen(r);
+				break; }
+				cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		case 2: {cout << "Введите размер экрана и кол-во кнопок: " << endl;
+
+			cin >> e >> r;
+			Notebook b(e, r);
+			cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout << "На сколько вы хотите изменить размер экрана и кол-во кнопок: " << endl;
+			cin >> e >> r;
+			b.izmKeyboard(e);
+			b.izmScreen(r);
+			break; }
+			cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+		case 3: {cout << "Введите размер экрана и кол-во кнопок: " << endl;
+
+			cin >> r >> e;
+			Computer c(e, r);
+			cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+			cout << "На сколько вы хотите изменить размер экрана и кол-во кнопок: " << endl;
+			cin >> e >> r;
+			c.izmKeyboard(e);
+			c.izmScreen(r);
+			break; }
+		default:
+			break;
+		}
+
+	} while (z != 0);
+	system("pause");
+	return 0;
+}
