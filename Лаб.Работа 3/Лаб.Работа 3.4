@@ -1,0 +1,63 @@
+#include "pch.h"
+#include <iostream>
+#include<string>
+using namespace std;
+
+class Vector {
+	double x, y, ugol;
+public:
+	void set_Vector() 
+	{
+	    cout << "- - - - - - - - - - - - - - - - - - - -" << endl;
+		cout << "Требуется ввести X и Y координаты: " << endl;
+		cin >> x;
+		cin >> y;
+			}
+	double modul() 
+	{
+		return sqrt(x*x + y * y);
+	}
+
+	void Set_ugol(Vector &other) 
+	{
+		ugol = this->x*other.x + this->y*other.y / (this->modul()*other.modul());
+
+	}
+	string summa(Vector &other) 
+	{
+		return to_string(this->x + other.x) + "+" + to_string(this->y + other.y);
+	}
+
+	string raznost(Vector &other) 
+	{
+		return to_string(this->x - other.x) + "-" + to_string(this->y - other.y);
+	}
+	double proizvsk(Vector &other) 
+	{
+		
+		return this->modul()*other.modul()*cos(ugol);
+	}
+	double proizvvec(Vector &other) 
+	{
+		
+		return this->modul()*other.modul()*sin(ugol);
+	}
+};
+
+int main()
+{
+	Vector a, b;
+	a.set_Vector();
+	b.set_Vector();
+	a.Set_ugol(b);
+	cout << "- - - - - - - - - - -" << endl;
+	cout <<"Cумма = "<< a.summa(b) << endl;
+	cout << "- - - - - - - - - - -" << endl;
+	cout << "Разность = " << a.raznost(b) << endl;
+	cout << "- - - - - - - - - - -" << endl;
+	cout << "Скалярное произведение: " << a.proizvsk(b) << endl;
+	cout << "- - - - - - - - - - -" << endl;
+	cout << "Векторное произведение: " << a.proizvvec(b) << endl;
+	system("pause");
+    return 0;
+}
