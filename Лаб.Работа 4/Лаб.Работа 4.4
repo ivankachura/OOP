@@ -1,0 +1,55 @@
+#include "stdafx.h"
+#include <iostream>
+#include<string>
+using namespace std;
+
+class Vector {
+	double x, y, ugol;
+public:
+	Vector() {
+	    cout << "- - - - - - - - - - - - - - - - - - - " << endl;
+		cout << "Введите X и Y координаты векторов:";
+		cin >> x >> y;
+	}
+	Vector(const Vector &other) {
+		this->x = other.x;
+		this->y = other.y;
+	}
+	~Vector(){}
+	void set_Vector() {
+	    cout << "- - - - - - - - - - - - - - - - - - - " << endl;
+		cout << "Введите X и Y координаты векторов:";
+		cin >> x >> y;
+	}
+	double modul() {
+		return sqrt(x*x + y * y);
+	}
+	void Set_ugol(Vector &other) {
+		ugol = this->x*other.x + this->y*other.y / (this->modul()*other.modul());
+	}
+	string summa(Vector &other) {
+		return to_string(this->x + other.x) + "+" + to_string(this->y + other.y);
+	}
+	string raznost(Vector &other) {
+		return to_string(this->x - other.x) + "-" + to_string(this->y - other.y);
+	}
+	double proizvsk(Vector &other) {
+		return this->modul()*other.modul()*cos(ugol);
+	}
+	double proizvvec(Vector &other) {
+		return this->modul()*other.modul()*sin(ugol);
+	}
+};
+int main()
+{
+	Vector a, b ;
+	a.Set_ugol(b);
+	cout << "! - - - - - - - - - - - - - - - - - - - !" << endl;
+	cout << "Cумма равна:" << a.summa(b) << endl;
+	cout << "Разность равна:" << a.raznost(b) << endl;
+	cout << "Произведение скалярных вел.равно:" << a.proizvsk(b) << endl;
+	cout << "Произведение векторных вел.равно:" << a.proizvvec(b) << endl;
+	cout << "! - - - - - - - - - - - - - - - - - - - !" << endl;
+	system("pause");
+	return 0;
+}
