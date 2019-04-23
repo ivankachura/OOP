@@ -1,0 +1,31 @@
+#include <iostream>
+#include "Complex.h"
+using namespace std;
+
+int main() {
+	double re, im;
+  cout << "- - - - - - - - - - - - - - - - -" << endl;
+	cout << "Введите действительную часть А: ";
+	cout << "- -" << endl;
+	cin >> re;
+	cout << "Введите мнимую часть А: ";
+	cin >> im;
+	Complex c(re, im);
+  cout << "- - - - - - - - - - - - - - - - -" << endl;
+	cout << "Введите действительную часть Б: ";
+	cout << "- -" << endl;
+	cin >> re;
+	cout << "Введите мнимую часть Б: ";
+	cin >> im;
+	Complex Ь(re, im);
+  cout << "- - - - - - - - - - - - - - - - -" << endl;
+	cout << "a + b = " << c + b << endl;
+  cout << "- -" << endl;
+	cout << "a - b = " << c - b << endl;
+  cout << "- -" << endl;
+	cout << "a * b = " << c * b << endl;
+  cout << "- -" << endl;
+	cout << "a / b = " << c / b << endl;
+  cout << "- -" << endl;
+	system("pause");
+	return 0;
