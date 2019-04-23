@@ -1,0 +1,97 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+using namespace std;
+class Vector {
+	double x, y, ugol;
+public:
+	Vector() {
+	    cout << "- - - - - - - - - - - - - - - - - -" << endl;
+		cout << "Введите X и Y координаты векторов: ";
+		cin >> x;
+		cin >> y;
+	}
+	Vector(const Vector &other) {
+		this->x = other.x;
+		this->y = other.y;
+	}
+	~Vector(){}
+	void set_Vector() {
+	    cout << "- - - - - - - - - - - - - - - - - -" << endl;
+		cout << "Введите X и Y координаты векторов: ";
+		cin >> x;
+		cin >> y;
+	}
+	double modul() {
+		return sqrt(x*x + y * y);
+	}
+	void Set_ugol(Vector &other) {
+		ugol = this->x*other.x + this->y*other.y / (this->modul()*other.modul());
+	}
+	Vector summa(Vector &other) {
+		this->x = this->x + other.x;
+		this->y = this->y + other.y;
+		return *this;}
+	Vector raznost(Vector &other) {
+		this->x = this->x - other.x;
+		this->y = this->y - other.y;
+		return *this;
+	}
+	double proizvsk(Vector &other) {
+		return this->modul()*other.modul()*cos(ugol);
+	}
+	double proizvvec(Vector &other) {
+		return this->modul()*other.modul()*sin(ugol);
+	}
+	friend ostream& operator<< (std::ostream &out, const Vector &vector)
+	{
+		out <<"("<<vector.x<<","<< vector.y<<")";
+		return out;
+	}
+	friend istream& operator>> (std::istream &in, Vector &vector)
+	{
+		cout << "- - - - - - - - - - - - - - - - - -" << endl;
+		cout << "Введите X и Y координаты: ";
+		in >> vector.x;
+		in >> vector.y;
+		return in;
+	}
+	bool operator > (Vector & other) {
+		if (this->modul() > other.modul())return true;
+		else return false;
+	}
+	bool operator < (Vector & other) {
+		if (this->modul() < other.modul())return true;
+		else return false;
+	}
+	bool operator == (Vector & other) {
+		if (this->modul() == other.modul())return true;
+		else return false;
+	}
+	Vector& operator ++ () {
+		this->x = x + 1;
+		this->y = y + 1;
+		return *this;
+	}
+	Vector& operator -- () {
+		this->x = x - 1;
+		this->y = y - 1;
+		return *this;
+	}
+};
+int main()
+{
+	Vector a, b ;
+	if (a > b)cout << a <<"Больше"<< endl;
+	else if (a < b)cout << b << "Больше" << endl;
+	else if (a == b)cout << "Равно";
+	cout << "incr a" << ++a<<endl;
+	cout << "decr a" << --a<<endl;
+	a.Set_ugol(b);
+	cout << "Сумма равна" << a.summa(b) << endl;
+	cout << "Разность равна" << a.raznost(b) << endl;
+	cout << "Произведение скал.вел.равно: " << a.proizvsk(b) << endl;
+	cout << "Произведение век.вел.равно: " << a.proizvvec(b) << endl;
+	system("pause");
+	return 0;
+}
