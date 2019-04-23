@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string>
+#include <Windows.h>
+using namespace std;
+class Alive {
+protected:
+	string name;
+	int age;
+public:
+	Alive(string &name, int age) : name(name), age(age) {};
+	string &getName() { return name; }
+	int getAge() { return age; }
+	virtual void move() = 0;
+};
+class Animal : public Alive {
+public:
+	Animal(string &name, int age) : Alive(name, age) {};
+	cout << "- - - - - - - - - - - - - - -" << endl;
+	void move() { cout << name << " Он бежит!" << endl; }
+};
+class Fish : public Alive {
+public:
+	Fish(string &name, int age) : Alive(name, age) {};
+	cout << "- - - - - - - - - - - - - - -" << endl;
+	void move() { cout << name << " Он плавает!" << endl; }
+};
+class Bird : public Alive {
+public:
+	Bird(string &name, int age) : Alive(name, age) {};
+	cout << "- - - - - - - - - - - - - - -" << endl;
+	void move() { cout << name << " Он летает!";	}
+};
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	string name;
+	int age;
+	cout << "- - - - - - - - - - - - - - -" << endl;
+	cout << "Рыба!" << endl;
+	cout << "Введите имя: ";
+	cin >> name;
+	cout << "EВведите возвраст: ";
+	cin >> age;
+	Fish f(name, age);
+	cout << "- - - - - - - - - - - - - - -" << endl;
+	cout << endl << "Животное!" << endl;
+	cout << "Eвведите имя: ";
+	cin >> name;
+	cout << "Введите возвраст: ";
+	cin >> age;
+	Animal a(name, age);
+	cout << "- - - - - - - - - - - - - - -" << endl;
+	cout << endl << "Птица" << endl;
+	cout << "Введите имя: ";
+	cin >> name;
+	cout << "Введите возвраст: ";
+	cin >> age;
+	Bird b(name, age);
+	cout << "- - - - - - - - - - - - - - -" << endl;
+	cout << endl << "Ваша ПТИЦА:" << endl << "ИМЯ: " << b.getName() << endl << "ВОЗВРАСТ: " <<
+			b.getAge() << endl;
+	b.move();
+	cout << endl << "Ваша РЫБА:" << endl << "ИМЯ: " << f.getName() << endl << "ВОЗВРАСТ: " <<
+			f.getAge() << endl;
+	f.move();
+	cout << endl << "Ваше ЖИВОТНОЕ: " << endl << "ИМЯ: " << a.getName() << endl << "ВОЗВРАСТ: " <<
+			a.getAge() << endl;
+			cout << "- - - - - - - - - - - - - - -" << endl;
+	a.move();
+	system("pause");
+	return 0;
+}
