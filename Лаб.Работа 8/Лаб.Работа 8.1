@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() 
+{
+	string name;
+	vector<string> students;
+	int n;
+	cout << "- - - - - - - - - - - - -"<<endl;
+	cout << "Введите кол-во студентов:";
+	cin >> n;
+	for (int i = 0; i < n; i++) 
+	{
+	    cout << "- - - - - - - - - - - - - - -"<<endl;
+		cout << "Введите фамилию,имя и группу:" << endl;
+		cin >> name;
+		students.push_back(name);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		cout << students[i] << endl;
+	}
+	system("pause");
+	return 0;
+}
