@@ -1,0 +1,36 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+using namespace std;
+class Tiles {
+	string brand;
+	int size_h, size_w, price;
+public:
+	Tiles() {
+	    cout << "- - - - - - - - - - - - - - - - - - - " << endl;
+		cout << "Введите Брэнд ширины и длины, цены:";
+		cin >> brand;
+		cin >> size_h >> size_w >> price;
+	}
+	Tiles(const Tiles &other) {
+		this->brand = other.brand;
+		this->size_h = other.size_h;
+		this->size_w = other.size_w;
+		this->price = other.price;
+	}
+	~Tiles() {};
+	string get_Data() {
+		return brand + " " + to_string(size_h) + " " + to_string(size_w) + " " + to_string(price);
+	}
+};
+int main()
+{
+	Tiles a;
+	cout << "- - - - - - - - " << endl;
+	cout<<"a=" << a.get_Data() << endl;
+	Tiles b = a;
+	cout << "- - - - - - - - " << endl;
+	cout << "b=" << b.get_Data() << endl;
+	system("pause");
+	return 0;
+}
